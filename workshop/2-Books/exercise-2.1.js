@@ -15,6 +15,35 @@
 //
 // Console.log them to verify that all is working.
 
-class Book {}
+class Book {
+  constructor(title, genre, author, isRead) {
+    this.title = title;
+    this.genre = genre;
+    this.author = author;
+    this.isRead = isRead || false;
+  }
+}
+
+const book1 = new Book(
+  "JavaScript: The Definitive Guide",
+  "Computer Science - Programming",
+  "David Flanagan",
+  false
+);
+
+const book2 = new Book("Beat the Bank", "Finance", "Larry Bates", true);
+const book3 = new Book(
+  "Sapiens: A Brief History of Humankind",
+  "History",
+  "Yuval Noah Harari",
+  true
+);
+const book4 = new Book("The Slight Edge", "Self Help", "Jeff Olson", true);
+const book5 = new Book(
+  "Norwegian Wood",
+  "Contemporary",
+  "Haruki Murakami",
+  true
+);
 
 console.log(book1, book2, book3, book4, book5);

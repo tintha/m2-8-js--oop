@@ -1,7 +1,46 @@
 // From 2.1. and 2.2
 // Copy over your solutions classes you created in 2.1 and 2.2.
 // Paste them right here:
+class Book {
+  constructor(title, genre, author, isRead) {
+    this.title = title;
+    this.genre = genre;
+    this.author = author;
+    this.isRead = isRead || false;
+  }
+}
 
+class BookList {
+  constructor() {
+    this.books = [];
+    this.lastRead = null;
+    this.currentlyReading = null;
+  }
+  add = (book) => {
+    this.books.push(book);
+    if (this.currentlyReading == null) {
+      this.currentlyReading = book;
+    }
+  };
+  getNumRead = () => {
+    const totalRead = this.books.reduce((acc, cur) => {
+      if (cur.isRead == true) {
+        acc++;
+      }
+      return acc;
+    }, 0);
+    return totalRead;
+  };
+  getNumUnread = () => {
+    const totalUnread = this.books.reduce((acc, cur) => {
+      if (cur.isRead == false) {
+        acc++;
+      }
+      return acc;
+    }, 0);
+    return totalUnread;
+  };
+}
 // Exercise 2.3
 //
 // We want to be able to add books to our BookList, so that we can start a
@@ -25,12 +64,12 @@
 const homeLibrary = new BookList();
 
 // Books are unread by default:
-homeLibrary.add(new Book('The Shining', 'Horror', 'Stephen King'));
-homeLibrary.add(new Book('American Gods', 'Fiction', 'Neil Gaiman'));
+homeLibrary.add(new Book("The Shining", "Horror", "Stephen King"));
+homeLibrary.add(new Book("American Gods", "Fiction", "Neil Gaiman"));
 
 // But, we can specify that we've read it:
 homeLibrary.add(
-  new Book('Eloquent JavaScript', 'Programming', 'Marijn Haverbeke', true)
+  new Book("Eloquent JavaScript", "Programming", "Marijn Haverbeke", true)
 );
 
 // At this point, we should have 2 unread books, and 1 read book:
